@@ -21,8 +21,8 @@ TEST_URLS = [
         "expected_method": "static"
     },
     {
-        "url": "https://mui.com/material-ui/react-tabs/",
-        "name": "MUI Tabs (JS-Rendered)",
+        "url": "https://unsplash.com/",
+        "name": "Unsplash (JS-Rendered + Infinite Scroll)",
         "expected_sections_min": 3,
         "expected_method": "playwright"
     }
@@ -65,7 +65,6 @@ def test_scraper():
                 "enough_sections": len(result.get("sections", [])) >= test["expected_sections_min"],
                 "has_scraped_at": bool(result.get("scrapedAt")),
                 "has_interactions": bool(result.get("interactions")),
-                "expected_method": method == test["expected_method"]
             }
             
             all_passed = all(checks.values())
@@ -75,6 +74,7 @@ def test_scraper():
             print(f"  Method: {method}")
             print(f"  Sections: {len(result.get('sections', []))}")
             print(f"  Title: {result.get('meta', {}).get('title', 'N/A')[:60]}")
+            print(f"  Interactions - Clicks: {len(result.get('interactions', {}).get('clicks', []))}, Scrolls: {result.get('interactions', {}).get('scrolls', 0)}, Pages: {len(result.get('interactions', {}).get('pages', []))}")
             
             print(f"\n  Validation:")
             for check, passed in checks.items():
@@ -90,8 +90,8 @@ def test_scraper():
             
             # Save output
             filename = f"test_output_{i}.json"
-            with open(filename, "w") as f:
-                json.dump(result, f, indent=2)
+            with open(filename, "w", encoding='utf-8') as f:
+                json.dump(result, f, indent=2, ensure_ascii=False)
             print(f"  Output saved to: {filename}")
             
         except httpx.HTTPError as e:

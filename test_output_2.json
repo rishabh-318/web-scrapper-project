@@ -1,0 +1,418 @@
+{
+  "url": "https://news.ycombinator.com/",
+  "scrapedAt": "2025-11-24T23:40:11.013657Z",
+  "meta": {
+    "title": "Hacker News",
+    "description": "",
+    "language": "en",
+    "canonical": "https://news.ycombinator.com/"
+  },
+  "sections": [
+    {
+      "id": "faq-0",
+      "type": "faq",
+      "label": "Hacker Newsnew | past | comments |",
+      "sourceUrl": "https://news.ycombinator.com/",
+      "content": {
+        "headings": [],
+        "text": "Hacker Newsnew | past | comments | ask | show | jobs | submitlogin1.Pebble Watch software is now 100% open source (ericmigi.com)568 points by Larrikin 4 hours ago | hide | 98 comments2.Claude Advanced Tool Use (anthropic.com)261 points by lebovic 4 hours ago | hide | 94 comments3.Shai-Hulud Returns: Over 300 NPM Packages Infected (helixguard.ai)806 points by mrdosija 12 hours ago | hide | 678 comments4.Three Years from GPT-3 to Gemini 3 (oneusefulthing.org)143 points by JumpCrisscross 6 hours ag...",
+        "links": [
+          {
+            "text": "",
+            "href": "https://news.ycombinator.com"
+          },
+          {
+            "text": "Hacker News",
+            "href": "https://news.ycombinator.com/news"
+          },
+          {
+            "text": "new",
+            "href": "https://news.ycombinator.com/newest"
+          },
+          {
+            "text": "past",
+            "href": "https://news.ycombinator.com/front"
+          },
+          {
+            "text": "comments",
+            "href": "https://news.ycombinator.com/newcomments"
+          },
+          {
+            "text": "ask",
+            "href": "https://news.ycombinator.com/ask"
+          },
+          {
+            "text": "show",
+            "href": "https://news.ycombinator.com/show"
+          },
+          {
+            "text": "jobs",
+            "href": "https://news.ycombinator.com/jobs"
+          },
+          {
+            "text": "submit",
+            "href": "https://news.ycombinator.com/submit"
+          },
+          {
+            "text": "login",
+            "href": "https://news.ycombinator.com/login?goto=news"
+          }
+        ],
+        "images": [
+          {
+            "src": "https://news.ycombinator.com/y18.svg",
+            "alt": ""
+          },
+          {
+            "src": "https://news.ycombinator.com/s.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://news.ycombinator.com/s.gif",
+            "alt": ""
+          }
+        ],
+        "lists": [],
+        "tables": [
+          [
+            [
+              "Hacker Newsnew | past | comments | ask | show | jobs | submitlogin",
+              "Hacker Newsnew | past | comments | ask | show | jobs | submit",
+              "login"
+            ],
+            [
+              "Hacker Newsnew | past | comments | ask | show | jobs | submit",
+              "login"
+            ],
+            [
+              "1.Pebble Watch software is now 100% open source (ericmigi.com)568 points by Larrikin 4 hours ago | hide | 98 comments2.Claude Advanced Tool Use (anthropic.com)261 points by lebovic 4 hours ago | hide | 94 comments3.Shai-Hulud Returns: Over 300 NPM Packages Infected (helixguard.ai)806 points by mrdosija 12 hours ago | hide | 678 comments4.Three Years from GPT-3 to Gemini 3 (oneusefulthing.org)143 points by JumpCrisscross 6 hours ago | hide | 87 comments5.Cool-retro-term: terminal emulator which mimics look and feel of the old CRTs (github.com/swordfish90)142 points by michalpleban 5 hours ago | hide | 58 comments6.Claude Opus 4.5 (anthropic.com)671 points by adocomplete 4 hours ago | hide | 305 comments7.Unpowered SSDs slowly lose data (xda-developers.com)64 points by amichail 4 hours ago | hide | 38 comments8.Neopets.com Changed My Life (2019) (annastreetman.com)29 points by bariumbitmap 2 hours ago | hide | 11 comments9.Show HN: I built an interactive HN Simulator (ysimulator.run)113 points by johnsillings 4 hours ago | hide | 52 comments10.The Bitter Lesson of LLM Extensions (sawyerhood.com)68 points by sawyerjhood 5 hours ago | hide | 27 comments11.Moving from OpenBSD to FreeBSD for firewalls (utcc.utoronto.ca)124 points by zdw 6 hours ago | hide | 56 comments12.PS5 now costs less than 64GB of DDR5 memory. RAM jumps to $600 due to shortage (tomshardware.com)209 points by speckx 4 hours ago | hide | 135 comments13.What OpenAI did when ChatGPT users lost touch with reality (nytimes.com)65 points by nonprofiteer 4 hours ago | hide | 68 comments14.Bytes before FLOPS: your algorithm is (mostly) fine, your data isn't (bitsdraumar.is)29 points by bofersen 4 hours ago | hide | 6 comments15.Show HN: OCR Arena – A playground for OCR models (ocrarena.ai)26 points by kbyatnal 2 hours ago | hide | 8 comments16.Chrome Jpegxl Issue Reopened (chromium.org)200 points by markdog12 11 hours ago | hide | 76 comments17.You can see a working Quantum Computer in IBM's London office (ianvisits.co.uk)24 points by thinkingemote 3 hours ago | hide | 4 comments18.TSMC Arizona outage saw fab halt, Apple wafers scrapped (culpium.com)143 points by speckx 5 hours ago | hide | 59 comments19.Corvus Robotics (YC S18): Hiring Head of Mfg/Ops, Next Door to YC Mountain View6 hours ago | hide20.Mind-reading devices can now predict preconscious thoughts (nature.com)104 points by srameshc 5 hours ago | hide | 72 comments21.Everything you need to know about hard drive vibration (2016) (ept.ca)8 points by asdefghyk 1 hour ago | hide | 3 comments22.Inside Rust's std and parking_lot mutexes – who wins? (cuongle.dev)120 points by signa11 9 hours ago | hide | 48 comments23.Building the largest known Kubernetes cluster (cloud.google.com)89 points by TangerineDream 10 hours ago | hide | 62 comments24.Launch HN: Karumi (YC F25) – Personalized, agentic product demos (karumi.ai)19 points by tonilopezmr 5 hours ago | hide | 9 comments25.Fifty Shades of OOP (lesleylai.info)33 points by todsacerdoti 5 hours ago | hide | 5 comments26.NSA and IETF, part 3: Dodging the issues at hand (cr.yp.to)289 points by upofadown 11 hours ago | hide | 155 comments27.Implications of AI to schools (twitter.com/karpathy)128 points by bilsbie 5 hours ago | hide | 136 comments28.The history of Indian science fiction (altermag.com)65 points by adityaathalye 5 hours ago | hide | 5 comments29.GrapheneOS migrates server infrastructure from France (privacyguides.org)171 points by 01-_- 4 hours ago | hide | 64 comments30.The only GM EV1 ever publicly sold (theautopian.com)75 points by zdw 10 hours ago | hide | 62 commentsMore",
+              "1.",
+              "Pebble Watch software is now 100% open source (ericmigi.com)",
+              "568 points by Larrikin 4 hours ago | hide | 98 comments",
+              "2.",
+              "Claude Advanced Tool Use (anthropic.com)",
+              "261 points by lebovic 4 hours ago | hide | 94 comments",
+              "3.",
+              "Shai-Hulud Returns: Over 300 NPM Packages Infected (helixguard.ai)",
+              "806 points by mrdosija 12 hours ago | hide | 678 comments",
+              "4.",
+              "Three Years from GPT-3 to Gemini 3 (oneusefulthing.org)",
+              "143 points by JumpCrisscross 6 hours ago | hide | 87 comments",
+              "5.",
+              "Cool-retro-term: terminal emulator which mimics look and feel of the old CRTs (github.com/swordfish90)",
+              "142 points by michalpleban 5 hours ago | hide | 58 comments",
+              "6.",
+              "Claude Opus 4.5 (anthropic.com)",
+              "671 points by adocomplete 4 hours ago | hide | 305 comments",
+              "7.",
+              "Unpowered SSDs slowly lose data (xda-developers.com)",
+              "64 points by amichail 4 hours ago | hide | 38 comments",
+              "8.",
+              "Neopets.com Changed My Life (2019) (annastreetman.com)",
+              "29 points by bariumbitmap 2 hours ago | hide | 11 comments",
+              "9.",
+              "Show HN: I built an interactive HN Simulator (ysimulator.run)",
+              "113 points by johnsillings 4 hours ago | hide | 52 comments",
+              "10.",
+              "The Bitter Lesson of LLM Extensions (sawyerhood.com)",
+              "68 points by sawyerjhood 5 hours ago | hide | 27 comments",
+              "11.",
+              "Moving from OpenBSD to FreeBSD for firewalls (utcc.utoronto.ca)",
+              "124 points by zdw 6 hours ago | hide | 56 comments",
+              "12.",
+              "PS5 now costs less than 64GB of DDR5 memory. RAM jumps to $600 due to shortage (tomshardware.com)",
+              "209 points by speckx 4 hours ago | hide | 135 comments",
+              "13.",
+              "What OpenAI did when ChatGPT users lost touch with reality (nytimes.com)",
+              "65 points by nonprofiteer 4 hours ago | hide | 68 comments",
+              "14.",
+              "Bytes before FLOPS: your algorithm is (mostly) fine, your data isn't (bitsdraumar.is)",
+              "29 points by bofersen 4 hours ago | hide | 6 comments",
+              "15.",
+              "Show HN: OCR Arena – A playground for OCR models (ocrarena.ai)",
+              "26 points by kbyatnal 2 hours ago | hide | 8 comments",
+              "16.",
+              "Chrome Jpegxl Issue Reopened (chromium.org)",
+              "200 points by markdog12 11 hours ago | hide | 76 comments",
+              "17.",
+              "You can see a working Quantum Computer in IBM's London office (ianvisits.co.uk)",
+              "24 points by thinkingemote 3 hours ago | hide | 4 comments",
+              "18.",
+              "TSMC Arizona outage saw fab halt, Apple wafers scrapped (culpium.com)",
+              "143 points by speckx 5 hours ago | hide | 59 comments",
+              "19.",
+              "Corvus Robotics (YC S18): Hiring Head of Mfg/Ops, Next Door to YC Mountain View",
+              "6 hours ago | hide",
+              "20.",
+              "Mind-reading devices can now predict preconscious thoughts (nature.com)",
+              "104 points by srameshc 5 hours ago | hide | 72 comments",
+              "21.",
+              "Everything you need to know about hard drive vibration (2016) (ept.ca)",
+              "8 points by asdefghyk 1 hour ago | hide | 3 comments",
+              "22.",
+              "Inside Rust's std and parking_lot mutexes – who wins? (cuongle.dev)",
+              "120 points by signa11 9 hours ago | hide | 48 comments",
+              "23.",
+              "Building the largest known Kubernetes cluster (cloud.google.com)",
+              "89 points by TangerineDream 10 hours ago | hide | 62 comments",
+              "24.",
+              "Launch HN: Karumi (YC F25) – Personalized, agentic product demos (karumi.ai)",
+              "19 points by tonilopezmr 5 hours ago | hide | 9 comments",
+              "25.",
+              "Fifty Shades of OOP (lesleylai.info)",
+              "33 points by todsacerdoti 5 hours ago | hide | 5 comments",
+              "26.",
+              "NSA and IETF, part 3: Dodging the issues at hand (cr.yp.to)",
+              "289 points by upofadown 11 hours ago | hide | 155 comments",
+              "27.",
+              "Implications of AI to schools (twitter.com/karpathy)",
+              "128 points by bilsbie 5 hours ago | hide | 136 comments",
+              "28.",
+              "The history of Indian science fiction (altermag.com)",
+              "65 points by adityaathalye 5 hours ago | hide | 5 comments",
+              "29.",
+              "GrapheneOS migrates server infrastructure from France (privacyguides.org)",
+              "171 points by 01-_- 4 hours ago | hide | 64 comments",
+              "30.",
+              "The only GM EV1 ever publicly sold (theautopian.com)",
+              "75 points by zdw 10 hours ago | hide | 62 comments",
+              "More"
+            ],
+            [
+              "1.",
+              "Pebble Watch software is now 100% open source (ericmigi.com)"
+            ],
+            [
+              "568 points by Larrikin 4 hours ago | hide | 98 comments"
+            ],
+            [
+              "2.",
+              "Claude Advanced Tool Use (anthropic.com)"
+            ],
+            [
+              "261 points by lebovic 4 hours ago | hide | 94 comments"
+            ],
+            [
+              "3.",
+              "Shai-Hulud Returns: Over 300 NPM Packages Infected (helixguard.ai)"
+            ],
+            [
+              "806 points by mrdosija 12 hours ago | hide | 678 comments"
+            ],
+            [
+              "4.",
+              "Three Years from GPT-3 to Gemini 3 (oneusefulthing.org)"
+            ],
+            [
+              "143 points by JumpCrisscross 6 hours ago | hide | 87 comments"
+            ],
+            [
+              "5.",
+              "Cool-retro-term: terminal emulator which mimics look and feel of the old CRTs (github.com/swordfish90)"
+            ],
+            [
+              "142 points by michalpleban 5 hours ago | hide | 58 comments"
+            ],
+            [
+              "6.",
+              "Claude Opus 4.5 (anthropic.com)"
+            ],
+            [
+              "671 points by adocomplete 4 hours ago | hide | 305 comments"
+            ],
+            [
+              "7.",
+              "Unpowered SSDs slowly lose data (xda-developers.com)"
+            ],
+            [
+              "64 points by amichail 4 hours ago | hide | 38 comments"
+            ],
+            [
+              "8.",
+              "Neopets.com Changed My Life (2019) (annastreetman.com)"
+            ],
+            [
+              "29 points by bariumbitmap 2 hours ago | hide | 11 comments"
+            ],
+            [
+              "9.",
+              "Show HN: I built an interactive HN Simulator (ysimulator.run)"
+            ],
+            [
+              "113 points by johnsillings 4 hours ago | hide | 52 comments"
+            ],
+            [
+              "10.",
+              "The Bitter Lesson of LLM Extensions (sawyerhood.com)"
+            ],
+            [
+              "68 points by sawyerjhood 5 hours ago | hide | 27 comments"
+            ],
+            [
+              "11.",
+              "Moving from OpenBSD to FreeBSD for firewalls (utcc.utoronto.ca)"
+            ],
+            [
+              "124 points by zdw 6 hours ago | hide | 56 comments"
+            ],
+            [
+              "12.",
+              "PS5 now costs less than 64GB of DDR5 memory. RAM jumps to $600 due to shortage (tomshardware.com)"
+            ],
+            [
+              "209 points by speckx 4 hours ago | hide | 135 comments"
+            ],
+            [
+              "13.",
+              "What OpenAI did when ChatGPT users lost touch with reality (nytimes.com)"
+            ],
+            [
+              "65 points by nonprofiteer 4 hours ago | hide | 68 comments"
+            ],
+            [
+              "14.",
+              "Bytes before FLOPS: your algorithm is (mostly) fine, your data isn't (bitsdraumar.is)"
+            ],
+            [
+              "29 points by bofersen 4 hours ago | hide | 6 comments"
+            ],
+            [
+              "15.",
+              "Show HN: OCR Arena – A playground for OCR models (ocrarena.ai)"
+            ],
+            [
+              "26 points by kbyatnal 2 hours ago | hide | 8 comments"
+            ],
+            [
+              "16.",
+              "Chrome Jpegxl Issue Reopened (chromium.org)"
+            ],
+            [
+              "200 points by markdog12 11 hours ago | hide | 76 comments"
+            ],
+            [
+              "17.",
+              "You can see a working Quantum Computer in IBM's London office (ianvisits.co.uk)"
+            ],
+            [
+              "24 points by thinkingemote 3 hours ago | hide | 4 comments"
+            ],
+            [
+              "18.",
+              "TSMC Arizona outage saw fab halt, Apple wafers scrapped (culpium.com)"
+            ],
+            [
+              "143 points by speckx 5 hours ago | hide | 59 comments"
+            ],
+            [
+              "19.",
+              "Corvus Robotics (YC S18): Hiring Head of Mfg/Ops, Next Door to YC Mountain View"
+            ],
+            [
+              "6 hours ago | hide"
+            ],
+            [
+              "20.",
+              "Mind-reading devices can now predict preconscious thoughts (nature.com)"
+            ],
+            [
+              "104 points by srameshc 5 hours ago | hide | 72 comments"
+            ],
+            [
+              "21.",
+              "Everything you need to know about hard drive vibration (2016) (ept.ca)"
+            ],
+            [
+              "8 points by asdefghyk 1 hour ago | hide | 3 comments"
+            ],
+            [
+              "22.",
+              "Inside Rust's std and parking_lot mutexes – who wins? (cuongle.dev)"
+            ],
+            [
+              "120 points by signa11 9 hours ago | hide | 48 comments"
+            ],
+            [
+              "23.",
+              "Building the largest known Kubernetes cluster (cloud.google.com)"
+            ],
+            [
+              "89 points by TangerineDream 10 hours ago | hide | 62 comments"
+            ],
+            [
+              "24.",
+              "Launch HN: Karumi (YC F25) – Personalized, agentic product demos (karumi.ai)"
+            ],
+            [
+              "19 points by tonilopezmr 5 hours ago | hide | 9 comments"
+            ],
+            [
+              "25.",
+              "Fifty Shades of OOP (lesleylai.info)"
+            ],
+            [
+              "33 points by todsacerdoti 5 hours ago | hide | 5 comments"
+            ],
+            [
+              "26.",
+              "NSA and IETF, part 3: Dodging the issues at hand (cr.yp.to)"
+            ],
+            [
+              "289 points by upofadown 11 hours ago | hide | 155 comments"
+            ],
+            [
+              "27.",
+              "Implications of AI to schools (twitter.com/karpathy)"
+            ],
+            [
+              "128 points by bilsbie 5 hours ago | hide | 136 comments"
+            ],
+            [
+              "28.",
+              "The history of Indian science fiction (altermag.com)"
+            ],
+            [
+              "65 points by adityaathalye 5 hours ago | hide | 5 comments"
+            ],
+            [
+              "29.",
+              "GrapheneOS migrates server infrastructure from France (privacyguides.org)"
+            ],
+            [
+              "171 points by 01-_- 4 hours ago | hide | 64 comments"
+            ],
+            [
+              "30.",
+              "The only GM EV1 ever publicly sold (theautopian.com)"
+            ],
+            [
+              "75 points by zdw 10 hours ago | hide | 62 comments"
+            ],
+            [
+              "More"
+            ],
+            [
+              "Guidelines | FAQ | Lists | API | Security | Legal | Apply to YC | Contact Search:"
+            ]
+          ],
+          [
+            [
+              "Hacker Newsnew | past | comments | ask | show | jobs | submit",
+              "login"
+            ]
+          ]
+        ]
+      },
+      "rawHtml": "<body><center><table id=\"hnmain\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"85%\" bgcolor=\"#f6f6ef\"><tbody><tr><td bgcolor=\"#ff6600\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"padding:2px\"><tbody><tr><td style=\"width:18px;padding-right:4px\"><a href=\"https://news.ycombinator.com\"><img src=\"y18.svg\" width=\"18\" height=\"18\" style=\"border:1px white solid; display:block\"></a></td><td style=\"line-height:12pt; height:10px;\"><span class=\"pagetop\"><b class=\"hnname\"><a href=\"news\">Hacker News</a></b><a href=\"newest\">new</a> | <a href=\"front\">past</a> | <a href=\"newcomments\">comments</a> | <a href=\"ask\">ask</a> | <a href=\"show\">show</a> | <a href=\"jobs\">jobs</a> | <a href=\"submit\" rel=\"nofollow\">submit</a></span></td><td style=\"text-align:right;padding-right:4px;\"><span class=\"pagetop\"><a href=\"login?goto=news\">login</a></span></td></tr></tbody></table></td></tr><tr style=\"height:10px\"></tr><tr id=\"bigbox\"><td><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr class=\"athing submission\" id=\"46037626\"><td align=\"right\" valign=\"top\" class=\"title\"><span class=\"rank\">1.</span></td><td valign=\"top\" class=\"votelinks\"><center><a id=\"up_46037626\" href=\"vote?id=46037626&amp;how=up&amp;goto=news\"><div class=\"votearrow\" title=\"upvote\"></div></a></center></td><td class=\"title\"><span class=\"titleline\"><a href=\"https://ericmigi.com/blog/pebble-watch-software-is-now-100percent-open-source\">Pebble Watch software is now 100% open source</a><span class=\"sitebit comhead\"> (<a href=\"from?site=ericmigi.com\"><span class=\"sitestr\">ericmigi.com</span></a>)</span></span></td></tr><tr><td colspan=\"2\"></td><td class=\"subtext\"><span class=\"subline\"><span class=\"score\" id=\"score_46037626\">568 points</span> by <a href=\"user?id=Larrikin\" class=\"hnuser\">Larrikin</a> <span class=\"age\" title=\"2025-11-24T18:52:12 1764010332\"><a href=\"item?id=46037626\">4 hours ago</a></span> <span id=\"unv_46037626\"></span> | <a href=\"hide?id=46037626&amp;goto=news\">hide</a> | <a href=\"item?id=46037626\">98&nbsp;comments</a></span></td></tr><tr class=\"spacer\" style=\"height:5px\"></tr><tr class=\"athing submission\" id=\"46038047\"><td align=\"right\" valign=\"top\" class=\"title\"><span class=\"rank\">2.</span></td><td valign=\"top\" class=\"votelinks\"><center><a id=\"up_46038047\" href=\"vote?id=46038047&amp;how=up&amp;goto=news\"><div class=\"votearrow\" title=\"upvote\"></div></a></center></td><td class=\"title\"><span class=\"titleline\"><a href=\"https://www.anthropic.com/engineering/advanced-tool-use\">Claude Advanced Tool Use</a><span class=\"sitebit comhead\"> (<a href=\"from?site=anthropic.com\"><span class=\"sitestr\">anthropic.com</span></a>)</span></span></td></tr><tr><td colspan=\"2\"></td><td class=\"subtext\"><span class=\"subline\"><span class=\"score\" id=\"score_46038047\">261 points</span> by <a href=\"user?id=lebovic\" class=\"hnuser\">lebovic</a> <span class=\"age\" title=\"2025-11-24T19:21:35 1764012095\"><a href=\"item?id=46038047\">4 hours ago</a></span> <span id=\"unv_46038047\"></span> | <a href=\"hide?...",
+      "truncated": true
+    }
+  ],
+  "interactions": {
+    "clicks": [],
+    "scrolls": 0,
+    "pages": [
+      "https://news.ycombinator.com/"
+    ]
+  },
+  "errors": []
+}
