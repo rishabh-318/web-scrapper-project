@@ -35,13 +35,13 @@ https://news.ycombinator.com/
 
 **Demonstrates:** Pagination depth ≥3 via "More" link following, multiple page loads tracked in `interactions.pages[]`, static scraping with link traversal, simple DOM structure.
 
-### 3. **Unsplash** (JS-Rendered + Infinite Scroll)
+### 3. **Lets Encrypt**
 
 ```
-https://unsplash.com/
+https://letsencrypt.org/
 ```
 
-**Demonstrates:** JS rendering detection (Playwright fallback), infinite scroll interactions (3+ scroll loads) tracked in `interactions.scrolls`, handling of dynamic content that requires browser automation, image-heavy website scraping.
+**Demonstrates:** Static-first scraping with rich semantic HTML, strong heading hierarchy for section grouping, clean documentation-style structure, reliable extraction of navigation/footer landmarks, and consistent link normalization. Ideal for validating static DOM parsing without requiring JS fallback, testing meta extraction (title, description, canonical), section labeling heuristics, and safe raw HTML truncation.
 
 ## 🏗️ Architecture
 
