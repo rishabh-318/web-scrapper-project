@@ -40,7 +40,7 @@ jobs:
 
       - name: Upload test outputs
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-outputs
           path: test_output_*.json
