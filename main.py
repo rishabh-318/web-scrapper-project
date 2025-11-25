@@ -453,29 +453,43 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
         async with async_playwright() as p:
             logger.info("Launching browser...")
             try:
-                # Try to launch browser with better error handling
+                # Platform-specific browser launch args
+                launch_args = []
+                # Linux/Unix systems need these flags for headless mode
+                if sys.platform != 'win32':
+                    launch_args = ['--no-sandbox', '--disable-setuid-sandbox']
+                
                 browser = await p.chromium.launch(
                     headless=True,
-                    args=['--no-sandbox', '--disable-setuid-sandbox']  # Help with some permission issues
+                    args=launch_args
                 )
                 logger.info("Browser launched successfully")
             except Exception as launch_error:
                 error_msg = f"Failed to launch browser: {str(launch_error)}"
-                logger.error(error_msg)
-                # Check if it's a browser installation issue
-                if "Executable doesn't exist" in str(launch_error) or "browser" in str(launch_error).lower():
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Playwright browser not installed. Please run: playwright install chromium"
-                    )
-                raise HTTPException(status_code=500, detail=error_msg)
+                logger.error(error_msg, exc_info=True)
+                error_detail = str(launch_error)
+                
+                # Check for common browser installation issues
+                if any(keyword in error_detail.lower() for keyword in [
+                    "executable doesn't exist", "browser", "chromium",
+                    "not found", "cannot find", "no such file"
+                ]):
+                    error_detail = "Playwright browser not installed. Please run: playwright install chromium"
+                elif "timeout" in error_detail.lower():
+                    error_detail = f"Browser launch timeout: {error_detail}"
+                elif any(keyword in error_detail.lower() for keyword in [
+                    "permission", "access", "denied", "eacces"
+                ]):
+                    error_detail = f"Permission error launching browser: {error_detail}"
+                
+                raise HTTPException(status_code=500, detail=error_detail)
             
             try:
                 page = await browser.new_page()
                 logger.info("New page created")
             except Exception as page_error:
                 error_msg = f"Failed to create page: {str(page_error)}"
-                logger.error(error_msg)
+                logger.error(error_msg, exc_info=True)
                 if browser:
                     try:
                         await browser.close()
@@ -488,12 +502,10 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                 logger.info(f"Navigating to {url}")
                 
                 # Try multiple wait strategies for better compatibility
-                # networkidle can be too strict for sites with continuous connections
-                # For sites like Unsplash, start with domcontentloaded (faster)
                 navigation_strategies = [
-                    ('domcontentloaded', 3000),   # Fast - just DOM ready (good for JS sites)
-                    ('load', 2000),               # Medium - all resources loaded
-                    ('networkidle', 1000),        # Slow - network quiet (may timeout on active sites)
+                    ('domcontentloaded', 3000),
+                    ('load', 2000),
+                    ('networkidle', 1000),
                 ]
                 
                 navigation_success = False
@@ -502,7 +514,7 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                     try:
                         logger.info(f"Trying navigation with wait_until='{wait_until}'...")
                         await page.goto(url, wait_until=wait_until, timeout=TIMEOUT_MS)
-                        await page.wait_for_timeout(extra_wait)  # Extra wait for JS rendering
+                        await page.wait_for_timeout(extra_wait)
                         logger.info(f"Page loaded with '{wait_until}' event")
                         navigation_success = True
                         break
@@ -520,37 +532,28 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                     logger.error(error_detail)
                     raise HTTPException(status_code=408, detail=error_detail)
                 
-                # Wait for content to actually appear (body with meaningful content)
-                # For image-heavy sites like Unsplash, check for images and visual elements too
+                # Wait for content to render...
                 logger.info("Waiting for content to render...")
                 try:
-                    # Wait for body to exist and have content (text OR images OR elements)
-                    # Use a more lenient check for sites like Unsplash
                     await page.wait_for_function(
                         """() => {
                             if (!document.body) return false;
                             const text = document.body.innerText || '';
                             const textLength = text.trim().length;
-                            const hasText = textLength > 50;  // Very lenient for image sites
+                            const hasText = textLength > 50;
                             const hasElements = document.querySelectorAll('article, section, main, [role="main"], .content, p, h1, h2, h3, div').length > 0;
-                            // Check for images (important for sites like Unsplash)
                             const hasImages = document.querySelectorAll('img[src], img[data-src], img[srcset], img[loading="lazy"]').length > 0;
-                            // Check for common content containers (Unsplash uses these)
                             const hasContainers = document.querySelectorAll('div[class*="grid"], div[class*="card"], div[class*="item"], div[class*="photo"], div[class*="Image"], a[href*="/photos/"]').length > 0;
                             return hasText || hasElements || hasImages || hasContainers;
                         }""",
-                        timeout=25000  # Increased timeout for slow-loading sites like Unsplash
+                        timeout=25000
                     )
                     logger.info("Content detected")
+                    await page.wait_for_timeout(4000)
                     
-                    # Additional wait for dynamic content to fully render
-                    # Unsplash and similar sites need more time for JS to hydrate
-                    await page.wait_for_timeout(4000)  # Increased wait for JS-heavy sites
-                    
-                    # Verify content actually loaded (not just empty shell)
                     content_check = await page.evaluate("""() => {
                         const bodyText = (document.body.innerText || '').trim();
-                        const hasText = bodyText.length > 100;  // Lowered threshold
+                        const hasText = bodyText.length > 100;
                         const hasElements = document.querySelectorAll('article, section, main, p, h1, h2, h3, div[class*="content"]').length > 3;
                         const hasImages = document.querySelectorAll('img[src], img[data-src]').length > 0;
                         const hasContainers = document.querySelectorAll('div[class*="grid"], div[class*="card"], div[class*="item"]').length > 0;
@@ -559,11 +562,9 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                     
                     if not content_check:
                         logger.warning("Content check failed - page may still be loading, waiting more...")
-                        # Wait longer and check again
                         await page.wait_for_timeout(5000)
                 except PlaywrightTimeout:
                     logger.warning("Content wait timeout, checking if any content exists...")
-                    # Final check before proceeding
                     has_any_content = False
                     try:
                         has_any_content = await page.evaluate("""() => {
@@ -583,17 +584,16 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                     if not has_any_content:
                         logger.error("No content detected after timeout")
                         raise HTTPException(status_code=408, detail="Page content did not load within timeout")
-                    await page.wait_for_timeout(3000)  # Fallback wait
+                    await page.wait_for_timeout(3000)
                 except Exception as e:
                     logger.warning(f"Content wait error: {e}, proceeding anyway...")
-                    await page.wait_for_timeout(3000)  # Fallback wait
+                    await page.wait_for_timeout(3000)
                 
                 logger.info("Page loaded successfully")
                 
-                # Remove noise elements (properly escape selectors)
+                # Remove noise elements
                 for selector in NOISE_SELECTORS:
                     try:
-                        # Use evaluate with proper parameter passing to avoid injection issues
                         await page.evaluate("""
                             (selector) => {
                                 try {
@@ -607,13 +607,11 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                         logger.debug(f"Failed to remove noise element {selector}: {e}")
                         pass
                 
-                # Wait for lazy-loaded images and content (important for image-heavy sites)
+                # Wait for lazy-loaded images and content
                 logger.info("Waiting for lazy-loaded content...")
                 await page.wait_for_timeout(2000)
                 
-                # Try to wait for images to load
                 try:
-                    # Wait for at least some images to be loaded
                     await page.wait_for_function(
                         """() => {
                             const images = Array.from(document.querySelectorAll('img'));
@@ -625,7 +623,7 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                 except:
                     logger.debug("Image load wait timeout, proceeding...")
                 
-                # Try click interactions (tabs, load more buttons)
+                # Try click interactions
                 logger.info("Attempting click interactions...")
                 try:
                     await attempt_clicks(page, interactions)
@@ -633,10 +631,9 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                     logger.warning(f"Click interactions failed: {e}")
                     errors.append({"message": f"Click interactions error: {str(e)}", "phase": "interactions"})
                 
-                # Wait after clicks for content to load
                 await page.wait_for_timeout(2000)
                 
-                # Try scroll/pagination (important for infinite scroll sites like Unsplash)
+                # Try scroll/pagination
                 logger.info("Attempting scrolls...")
                 try:
                     await attempt_scrolls(page, interactions, url)
@@ -644,10 +641,9 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                     logger.warning(f"Scroll interactions failed: {e}")
                     errors.append({"message": f"Scroll interactions error: {str(e)}", "phase": "interactions"})
                 
-                # Final wait for any content loaded by scrolling
                 await page.wait_for_timeout(2000)
                 
-                # Final content verification before scraping
+                # Final content verification
                 logger.info("Verifying final content state...")
                 try:
                     final_content_check = await page.evaluate("""() => {
@@ -655,7 +651,7 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                         const textLength = bodyText.length;
                         const elementCount = document.querySelectorAll('article, section, main, p, h1, h2, h3, div').length;
                         const imageCount = document.querySelectorAll('img[src], img[data-src]').length;
-                        const hasContent = textLength > 50 || elementCount > 3 || imageCount > 0;  // More lenient
+                        const hasContent = textLength > 50 || elementCount > 3 || imageCount > 0;
                         return {
                             textLength: textLength,
                             elementCount: elementCount,
@@ -683,38 +679,37 @@ async def scrape_with_playwright(url: str) -> Dict[str, Any]:
                 result["errors"] = errors
                 
                 logger.info(f"Successfully scraped {len(result['sections'])} sections")
-                # Browser will be closed by context manager when exiting async with block
                 return result
                 
             except PlaywrightTimeout as e:
                 error_msg = f"Timeout: {str(e)}"
                 logger.error(error_msg)
                 errors.append({"message": error_msg, "phase": "render"})
-                # Browser will be closed by context manager
                 raise HTTPException(status_code=408, detail="Page load timeout")
             except HTTPException:
-                # Re-raise HTTP exceptions (browser cleanup handled by context manager)
                 raise
             except Exception as e:
                 error_msg = f"Scraping error: {str(e)}"
                 logger.error(error_msg, exc_info=True)
                 errors.append({"message": str(e), "phase": "scraping"})
-                # Browser will be closed by context manager
                 raise HTTPException(status_code=500, detail=f"Scraping failed: {str(e)}")
     except HTTPException:
-        # Re-raise HTTP exceptions (browser cleanup handled by context manager)
         raise
     except Exception as e:
         error_msg = f"Playwright initialization error: {str(e)}"
         logger.error(error_msg, exc_info=True)
         
-        # Provide more helpful error messages
         error_detail = str(e)
-        if "Executable doesn't exist" in error_detail or "browser" in error_detail.lower():
+        if any(keyword in error_detail.lower() for keyword in [
+            "executable doesn't exist", "browser", "chromium",
+            "not found", "cannot find", "no such file"
+        ]):
             error_detail = "Playwright browser not installed. Please run: playwright install chromium"
         elif "timeout" in error_detail.lower():
             error_detail = f"Browser launch timeout: {error_detail}"
-        elif "permission" in error_detail.lower() or "access" in error_detail.lower():
+        elif any(keyword in error_detail.lower() for keyword in [
+            "permission", "access", "denied", "eacces"
+        ]):
             error_detail = f"Permission error launching browser: {error_detail}"
         
         raise HTTPException(status_code=500, detail=f"Playwright initialization failed: {error_detail}")
@@ -891,7 +886,12 @@ async def health_check():
     try:
         async with async_playwright() as p:
             try:
-                browser = await p.chromium.launch(headless=True, args=['--no-sandbox'])
+                # Platform-specific args
+                launch_args = []
+                if sys.platform != 'win32':
+                    launch_args = ['--no-sandbox']
+                
+                browser = await p.chromium.launch(headless=True, args=launch_args)
                 await browser.close()
                 status["playwright"] = "ready"
             except Exception as e:
